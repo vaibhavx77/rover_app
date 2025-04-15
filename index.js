@@ -10,7 +10,12 @@ const app = express();
 const server = createServer(app);
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: '*', // Replace '*' with your frontend URL in production
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+}));
 app.use(express.json());
 
 // MongoDB Connection
